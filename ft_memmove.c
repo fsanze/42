@@ -6,7 +6,7 @@
 /*   By: fsanz-ex <fsanz-ex@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/17 16:06:41 by fsanz-ex          #+#    #+#             */
-/*   Updated: 2023/02/19 13:17:07 by fsanz-ex         ###   ########.fr       */
+/*   Updated: 2023/03/17 22:47:09 by fsanz-ex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,10 @@ void	*ft_memmove(void *dst, const void *src, size_t len)
 	s = (const unsigned char *) src;
 	d = (unsigned char *) dst;
 	if (s < d)
+	{
 		while (len--)
 			d[len] = s[len];
+	}
 	else
 		ft_memcpy(d, s, len);
 	return (dst);
