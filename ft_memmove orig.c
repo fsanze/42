@@ -1,31 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strmapi.c                                       :+:      :+:    :+:   */
+/*   ft_memmove2.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: fsanz-ex <fsanz-ex@student.42madrid.com    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/03/04 22:04:13 by fsanz-ex          #+#    #+#             */
-/*   Updated: 2023/05/11 15:15:22 by fsanz-ex         ###   ########.fr       */
+/*   Created: 2023/01/17 16:06:41 by fsanz-ex          #+#    #+#             */
+/*   Updated: 2023/05/09 15:58:25 by fsanz-ex         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_strmapi(char const *s, char (*f)(unsigned int, char))
-{
-	int		i;
-	char	*s2;
+/*copies len bytes from string src to string dst.  The two strings may overlap.
+Returns the original value of dst.*/
 
-	i = 0;
-	s2 = (char *) malloc (sizeof (char) * (ft_strlen(s) + 1));
-	if (!s2)
-		return (NULL);
-	while (s[i])
+void	*ft_memmove(void *dst, const void *src, size_t len)
+{
+	const unsigned char	*s;
+	unsigned char		*d;
+
+s = (const unsigned char *) src;
+	d = (unsigned char *) dst;
+	if (s < d)
 	{
-		s2[i] = f(i, s[i]);
-		i++;
+		while (len--)
+			d[len] = s[len];
 	}
-	s2[i] = '\0';
-	return (s2);
+	else
+		ft_memcpy(d, s, len);
+	return (dst);
 }
